@@ -1,0 +1,24 @@
+{
+  "name": "projetorodrigo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+  "cypress:run": "cypress run",
+  "report:generate": "node generate-report.js",
+  "test:report": "powershell -Command \"Remove-Item 'cypress/reports/*.json' -ErrorAction SilentlyContinue; npx cypress run; npx mochawesome-merge cypress/reports/*.json > cypress/reports/report.json; npx marge cypress/reports/report.json -f report -o cypress/reports\""
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cypress": "^15.11.0",
+    "init": "^0.1.2"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
+  }
+}

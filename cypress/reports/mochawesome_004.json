@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-03-11T13:43:27.192Z",
+    "end": "2026-03-11T13:43:29.437Z",
+    "duration": 2245,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "969d943c-3c30-495c-a7a3-f916a2ecacc3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\frontend\\carrinho.cy.js",
+      "file": "cypress\\e2e\\frontend\\carrinho.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f5cdc755-cf0f-46e5-9bfb-a15e2d58475c",
+          "title": "Frontend - Carrinho",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve adicionar produto ao carrinho",
+              "fullTitle": "Frontend - Carrinho Deve adicionar produto ao carrinho",
+              "timedOut": null,
+              "duration": 2228,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.login();\n_homePage.default.adicionarPrimeiroProduto();\n_homePage.default.abrirCarrinho();\n_homePage.default.validarPaginaCarrinho();",
+              "err": {
+                "message": "TypeError: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Cannot read properties of undefined (reading 'data')\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application",
+                "estack": "TypeError: The following error originated from your application code, not from Cypress. It was caused by an unhandled promise rejection.\n\n  > Cannot read properties of undefined (reading 'data')\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n    at <unknown> (https://front.serverest.dev/static/js/main.63e8c0e3.chunk.js:1:47249)",
+                "diff": null
+              },
+              "uuid": "95dc3e3f-389d-4aef-81c2-2d4091578673",
+              "parentUUID": "f5cdc755-cf0f-46e5-9bfb-a15e2d58475c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "95dc3e3f-389d-4aef-81c2-2d4091578673"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2228,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "embeddedScreenshots": true,
+        "inlineAssets": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
