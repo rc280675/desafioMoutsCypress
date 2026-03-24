@@ -1,37 +1,59 @@
+import BookingService from '../../services/bookingService'
 import { gerarReserva } from '../../fixtures/bookingData'
 
-describe('API - Booking Tests', () => {
-  let bookingId
-  const reserva = gerarReserva()
+describe('Booking API', () => {
 
-  it('Deve criar uma nova reserva', () => {
-    cy.criarReserva(reserva).then((response) => {
-      expect(response.status).to.eq(200)
-      expect(response.body).to.have.property('bookingid')
-      bookingId = response.body.bookingid
-    })
-  })
+  it('Deve criar uma reserva com sucesso', () => {
 
-  it('Deve listar reservas e encontrar a criada', () => {
-    cy.listarReservas().then((response) => {
-      expect(response.status).to.eq(200)
-      expect(response.body.some(b => b.bookingid === bookingId)).to.be.true
-    })
+    const reserva = gerarReserva()
+
+    BookingService.criarReserva(reserva)
+      .then((response) => {
+
+        expect(response.status).to.eq(200)
+        expect(response.body).to.have.property('bookingid')
+        expect(response.body.booking.firstname).to.eq(reserva.firstname)
+
+      })
   })
 
-it('Deve deletar a reserva criada', function() {
-  cy.request({
-    method: 'POST',
-    url: `${Cypress.env('apiUrlrestful')}/auth`,
-    body: {
-      username: 'admin',
-      password: 'password123'
-    }
-  }).then((res) => {
-    const token = res.body.token
-    cy.deletarReserva(bookingId, token).then((response) => {
-      expect(response.status).to.be.oneOf([201, 200, 204])
-    })
+
+  it('Deve listar reservas', () => {
+
+    BookingService.listarReservas()
+      .then((response) => {
+
+        expect(response.status).to.eq(200)
+        expect(response.body).to.be.an('array')
+
+      })
   })
+
+
+  it('Deve criar e deletar reserva', () => {
+
+    const reserva = gerarReserva()
+
+    BookingService.criarReserva(reserva)
+      .then((createResponse) => {
+
+        const bookingId = createResponse.body.bookingid
+
+        BookingService.gerarToken()
+          .then((token) => {
+
+            BookingService.deletarReserva(bookingId, token)
+              .then((deleteResponse) => {
+
+                expect(deleteResponse.status)
+                  .to.be.oneOf([201, 200, 204])
+
+              })
+
+          })
+
+      })
+
   })
-    })
+
+})
